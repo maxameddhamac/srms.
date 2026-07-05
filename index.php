@@ -41,10 +41,11 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 </div>
                 <div class="pt-2">
                     <a href="index.php?page=dashboard" class="<?php echo $page == 'dashboard' ? 'active' : ''; ?>"><i class="fa fa-tachometer-alt me-2"></i> Dashboard</a>
-                    <a href="index.php?page=add-classes" class="<?php echo $page == 'add-classes' ? 'active' : ''; ?>"><i class="fa fa-folder-plus me-2"></i> Classes</a>
-                    <a href="index.php?page=add-subjects" class="<?php echo $page == 'add-subjects' ? 'active' : ''; ?>"><i class="fa fa-book me-2"></i> Subjects</a>
-                    <a href="index.php?page=add-students" class="<?php echo $page == 'add-students' ? 'active' : ''; ?>"><i class="fa fa-users me-2"></i> Students</a>
-                    <a href="index.php?page=results" class="<?php echo $page == 'results' ? 'active' : ''; ?>"><i class="fa fa-file-invoice me-2"></i> Results</a>
+<a href="index.php?page=add-classes" class="<?php echo $page == 'add-classes' ? 'active' : ''; ?>"><i class="fa fa-folder-plus me-2"></i> Classes</a>
+<a href="index.php?page=add-subjects" class="<?php echo $page == 'add-subjects' ? 'active' : ''; ?>"><i class="fa fa-book me-2"></i> Subjects</a>
+<a href="index.php?page=add-students" class="<?php echo $page == 'add-students' ? 'active' : ''; ?>"><i class="fa fa-users me-2"></i> Students</a>
+<a href="index.php?page=results" class="<?php echo $page == 'results' ? 'active' : ''; ?>"><i class="fa fa-file-invoice me-2"></i> Results</a>
+<a href="index.php?page=upload-excel" class="<?php echo $page == 'upload-excel' ? 'active' : ''; ?>"><i class="fa fa-file-excel me-2"></i> Excel Upload</a>
                 </div>
             </nav>
 
