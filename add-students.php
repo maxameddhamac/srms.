@@ -1,16 +1,15 @@
 <?php
-// Tallaabada 1: Marka badhanka la gujiyo, xogta la badbaadiyo
 if(isset($_POST['submit'])) {
     $studentname = $_POST['studentname'];
     $rollid = $_POST['rollid'];
     $email = $_POST['email'];
-    $classid = $_POST['classid']; // Kani waa ID-ga fasalka laga soo doortay dropdown-ka
+    $classid = $_POST['classid']; 
 
     $query = "INSERT INTO tblstudents (StudentName, RollId, StudentEmail, ClassId) VALUES ('$studentname', '$rollid', '$email', '$classid')";
     $result = mysqli_query($con, $query);
 
     if($result) {
-        echo "<div class='alert alert-success'>Ardayga si guul leh ayaa loo kaydiyey sxb!</div>";
+        echo "<div class='alert alert-success'>saved</div>";
     } else {
         echo "<div class='alert alert-danger'>Error ayaa dhacay: " . mysqli_error($con) . "</div>";
     }
@@ -45,7 +44,6 @@ if(isset($_POST['submit'])) {
                     <select name="classid" class="form-select" required>
                         <option value="">-- Dooro Fasal --</option>
                         <?php
-                        // HALKAN BAYNU DYNAMIC AHAAN FASSALADA UGA SOO JIIDANAYNAA DATABASE-KA
                         $get_classes = "SELECT * FROM tblclasses";
                         $res_classes = mysqli_query($con, $get_classes);
                         while($row = mysqli_fetch_assoc($res_classes)) {

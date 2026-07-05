@@ -10,7 +10,7 @@ if(isset($_POST['submit'])) {
     $result = mysqli_query($con, $query);
 
     if($result) {
-        echo "<div class='alert alert-success mt-2'>Fasalka si guul leh ayaa loo kaydiyey sxb!</div>";
+        echo "<div class='alert alert-success mt-2'>saved</div>";
     } else {
         echo "<div class='alert alert-danger mt-2'>Error ayaa dhacay: " . mysqli_error($con) . "</div>";
     }
@@ -26,12 +26,12 @@ if(isset($_POST['submit'])) {
         <div class="card shadow border-0 p-4">
             <form method="POST" action="">
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Class Name (e.g., Form 1, Grade 6)</label>
+                    <label class="form-label fw-bold">Class Name </label>
                     <input type="text" name="classname" class="form-control" placeholder="Qor magaca fasalka" required>
                 </div>
                 
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Section (e.g., A, B, Subax, Galab)</label>
+                    <label class="form-label fw-bold">Section </label>
                     <input type="text" name="section" class="form-control" placeholder="Qor qaybta uu yahay" required>
                 </div>
 

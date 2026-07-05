@@ -6,7 +6,6 @@ if(isset($_POST['login'])) {
     $username = mysqli_real_escape_string($con, $_POST['username']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
 
-    // Shuruud fudud: Waxaad u beddeli kartaa username-ka iyo password-ka waxaad rabto sxb
     if($username == "admin" && $password == "admin123") {
         $_SESSION['admin_logged'] = true;
         header("Location: index.php?page=dashboard");

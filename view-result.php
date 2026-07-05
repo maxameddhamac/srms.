@@ -5,7 +5,7 @@ include('connection.php');
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fiiri Natiijada Imtixaanka</title>
+    <title>eeg Natiijada Imtixaanka</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -34,7 +34,6 @@ include('connection.php');
     if(isset($_GET['rollid'])) {
         $rollid = mysqli_real_escape_string($con, $_GET['rollid']);
 
-        // 1. Soo qaad xogta guud ee ardayga iyo fasalkiisa
         $student_q = "SELECT tblstudents.*, tblclasses.ClassName, tblclasses.Section 
                       FROM tblstudents 
                       INNER JOIN tblclasses ON tblstudents.ClassId = tblclasses.id 
@@ -75,7 +74,6 @@ include('connection.php');
                             </thead>
                             <tbody>
                                 <?php
-                                // Soo qaad dhammaan buundooyinka ardaygan uu keenay
                                 $results_q = "SELECT tblsubjects.SubjectName, tblresults.marks 
                                               FROM tblresults 
                                               INNER JOIN tblsubjects ON tblresults.SubjectId = tblsubjects.id 

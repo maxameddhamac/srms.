@@ -1,17 +1,13 @@
 <?php
-// Maadaama file-kan lagu dhex ridayo index.php, connection-kii horey ayuu u furan yahay.
 
-// 1. Soo tiri tirada guud ee Fasallada
 $q_classes = "SELECT id FROM tblclasses";
 $r_classes = mysqli_query($con, $q_classes);
 $total_classes = mysqli_num_rows($r_classes);
 
-// 2. Soo tiri tirada guud ee Maaddooyinka
 $q_subjects = "SELECT id FROM tblsubjects";
 $r_subjects = mysqli_query($con, $q_subjects);
 $total_subjects = mysqli_num_rows($r_subjects);
 
-// 3. Soo tiri tirada guud ee Ardayda
 $q_students = "SELECT id FROM tblstudents";
 $r_students = mysqli_query($con, $q_students);
 $total_students = mysqli_num_rows($r_students);

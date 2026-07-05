@@ -1,11 +1,8 @@
 <?php
-// Tallaabada 1: Waxaan bilaabaynaa Session-ka si system-ku u xasuusto qofka soo galay
 session_start();
 
-// Tallaabada 2: Waxaan u yeeranaynaa faylkii iskuxirka database-ka ee aynu hadda samaynay
 include('connection.php');
 
-// Tallaabada 3: Dynamic Page Routing (Soo qabashada bogga la gujiyey)
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 ?>
 <!DOCTYPE html>
@@ -51,7 +48,6 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 
             <main class="col-md-10 ms-sm-auto main-content">
                 <?php 
-                    // Nidaamku wuxuu hubinayaa haddii file-ka la codsaday uu jiro, markaas ayuu soo dhex gelinayaa
                     if (file_exists($page . '.php')) {
                         include($page . '.php');
                     } else {

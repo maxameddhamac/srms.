@@ -1,11 +1,8 @@
 <?php
-// Tallaabada 1: Hubinta haddii badhanka Submit la gujiyey
 if(isset($_POST['submit'])) {
-    // Soo qabashada xogta ka timid foomka maaddooyinka
     $subjectname = $_POST['subjectname'];
     $subjectcode = $_POST['subjectcode'];
 
-    // Amarka SQL-ka ee maadada lagu dhex tuurayo jadwalka tblsubjects
     $query = "INSERT INTO tblsubjects (SubjectName, SubjectCode) VALUES ('$subjectname', '$subjectcode')";
     $result = mysqli_query($con, $query);
 
@@ -27,12 +24,12 @@ if(isset($_POST['submit'])) {
             <!-- Foomka xogta maaddooyinka -->
             <form method="POST" action="">
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Subject Name (e.g., Mathematics, English)</label>
+                    <label class="form-label fw-bold">Subject Name </label>
                     <input type="text" name="subjectname" class="form-control" placeholder="Qor magaca maadada" required>
                 </div>
                 
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Subject Code (e.g., MATH101, ENG202)</label>
+                    <label class="form-label fw-bold">Subject Code </label>
                     <input type="text" name="subjectcode" class="form-control" placeholder="Qor koodhka maadada" required>
                 </div>
 
