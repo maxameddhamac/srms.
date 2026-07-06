@@ -17,7 +17,7 @@ if(isset($_POST['submit'])) {
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <style>
-    /* Si uu ula jaanqaado Bootstrap 5 Style-kiisa */
+   
     .select2-container--default .select2-selection--single {
         height: 38px !important;
         border: 1px solid #dee2e6 !important;
@@ -113,7 +113,7 @@ if(isset($_POST['submit'])) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-    // Marka boggu uu soo kaco, u beddel dropdown-ka mid la search-gareyn karo
+  
     $(document).ready(function() {
         $('.searchable-select').select2({
             width: '100%'
