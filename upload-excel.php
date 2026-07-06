@@ -1,5 +1,5 @@
 <?php
-// Hubi haddii badhanka Upload la gujiyey
+
 if (isset($_POST['upload_excel'])) {
     
     // Soo qabashada faylka la soo doortay

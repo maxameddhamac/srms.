@@ -49,7 +49,7 @@ include('connection.php');
                 <div class="col-md-8">
                     <div class="card shadow border-0 p-5 bg-white">
                         <div class="text-center border-bottom pb-3 mb-4">
-                            <h4 class="fw-bold m-0 text-primary">DALLOODHO PRIMARY SCHOOL</h4>
+                            <h4 class="fw-bold m-0 text-primary"> PRIMARY SCHOOL</h4>
                             <small class="text-muted">Official Student Report Card</small>
                         </div>
                         
