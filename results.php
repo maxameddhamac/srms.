@@ -68,7 +68,7 @@ if(isset($_POST['submit'])) {
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Marks (Buundada)</label>
+                    <label class="form-label fw-bold">Marks (dhibcaha)</label>
                     <input type="number" name="marks" class="form-control" min="0" max="100" required>
                 </div>
 
@@ -77,36 +77,7 @@ if(isset($_POST['submit'])) {
         </div>
     </div>
 
-    <div class="col-md-7">
-        <div class="card shadow border-0 p-4">
-            <h5 class="mb-3 fw-bold text-success">Live Results Table</h5>
-            <table class="table table-striped table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Student</th>
-                        <th>Subject</th>
-                        <th>Marks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql = "SELECT tblstudents.StudentName, tblsubjects.SubjectName, tblresults.marks 
-                            FROM tblresults 
-                            INNER JOIN tblstudents ON tblresults.StudentId = tblstudents.id 
-                            INNER JOIN tblsubjects ON tblresults.SubjectId = tblsubjects.id 
-                            ORDER BY tblresults.id DESC";
-                    $results = mysqli_query($con, $sql);
-                    while($row = mysqli_fetch_assoc($results)) {
-                        echo "<tr>
-                                <td>".$row['StudentName']."</td>
-                                <td>".$row['SubjectName']."</td>
-                                <td><span class='badge bg-info text-dark'>".$row['marks']."</span></td>
-                              </tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+    
     </div>
 </div>
 
