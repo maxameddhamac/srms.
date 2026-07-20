@@ -29,7 +29,6 @@ if(isset($_POST['login'])) {
         $error = "Username-kan lama helin sxb!";
     }
     
-    $stmt->close();
 
 ?>
 <!DOCTYPE html>
