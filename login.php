@@ -3,17 +3,34 @@ session_start();
 include('connection.php');
 
 if(isset($_POST['login'])) {
-    $username = mysqli_real_escape_string($con, $_POST['username']);
-    $password = mysqli_real_escape_string($con, $_POST['password']);
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-    if($username == "admin" && $password == "admin123") {
+    // prepare waxan ku falaya amaanaky inoo sugaysa dhalinyaro
+    $stmt = $con->prepare("SELECT id, username, password FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
         $_SESSION['admin_logged'] = true;
+        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['username'] = $row['username'];
+        
         header("Location: index.php?page=dashboard");
         exit();
     } else {
-        $error = "Username ama Password khaldan sxb!";
+        // Halkan ayaan ku eegaynaa waxa dhabta ah ee cilladda ah
+        $error = "Username ama Password-ka waa khalad sxb! (Waxaa la raadinayay: User: $username)";
     }
-}
+        }
+     else {
+        $error = "Username-kan lama helin sxb!";
+    }
+    
+    $stmt->close();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +50,7 @@ if(isset($_POST['login'])) {
     <form method="POST" action="">
         <div class="mb-3">
             <label class="form-label fw-bold">Username</label>
-            <input type="text" name="username" class="form-control" required placeholder="Tusaale: admin">
+            <input type="text" name="username" class="form-control" required placeholder="Tusaale: admin" autocomplete="off">
         </div>
         <div class="mb-3">
             <label class="form-label fw-bold">Password</label>
