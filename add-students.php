@@ -40,7 +40,7 @@ if(isset($_POST['submit'])) {
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label fw-bold">Select Class (Fasalka)</label>
+                    <label class="form-label fw-bold">DOORO Class (Fasalka)</label>
                     <select name="classid" class="form-select" required>
                         <option value="">-- Dooro Fasal --</option>
                         <?php
