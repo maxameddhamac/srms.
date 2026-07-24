@@ -13,7 +13,7 @@ include('connection.php');
     <div class="row justify-content-center">
         <div class="col-md-6 text-center mb-4">
             <h2 class="fw-bold text-dark">Student Result Portal</h2>
-            <p class="text-muted">Geli Roll ID-gaaga si aad u aragto warqadda dhibcahaaga.</p>
+            <p class="text-muted">FADLAN Geli Roll ID-gaaga si aad u aragto warqadda dhibcahaaga.</p>
         </div>
     </div>
 
