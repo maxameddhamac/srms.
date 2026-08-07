@@ -64,54 +64,9 @@ $teacher_data = mysqli_fetch_assoc($total_teachers);
 $count_teachers = $teacher_data['total'];
 ?>
 
-<div class="container-fluid">
-    <h2 class="mt-4 mb-4">Dashboard Overview</h2>
-    
-    <div class="row">
-        <!-- Total Classes Card -->
-        <div class="col-md-4 mb-3">
-            <div class="card text-white bg-primary p-3 shadow">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h2><?php echo isset($total_classes) ? $total_classes : 8; ?></h2>
-                        <p class="mb-0">Total Classes</p>
-                    </div>
-                    <div>
-                        <i class="fa fa-folder fa-3x opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Total Subjects Card -->
-        <div class="col-md-4 mb-3">
-            <div class="card text-white bg-success p-3 shadow">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h2><?php echo isset($total_subjects) ? $total_subjects : 7; ?></h2>
-                        <p class="mb-0">Total Subjects</p>
-                    </div>
-                    <div>
-                        <i class="fa fa-book fa-3x opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Total Students Card -->
-        <div class="col-md-4 mb-3">
-            <div class="card text-white bg-warning p-3 shadow">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h2><?php echo isset($total_students) ? $total_students : 6; ?></h2>
-                        <p class="mb-0">Total Students</p>
-                    </div>
-                    <div>
-                        <i class="fa fa-users fa-3x opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+       <br>
+       
 
         <!-- NEW: Total Teachers Card (Analysis) -->
         <div class="col-md-4 mb-3">
