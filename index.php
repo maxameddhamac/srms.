@@ -43,6 +43,9 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 <a href="index.php?page=add-students" class="<?php echo $page == 'add-students' ? 'active' : ''; ?>"><i class="fa fa-users me-2"></i> Students</a>
 <a href="index.php?page=results" class="<?php echo $page == 'results' ? 'active' : ''; ?>"><i class="fa fa-file-invoice me-2"></i> Results</a>
 <a href="index.php?page=upload-excel" class="<?php echo $page == 'upload-excel' ? 'active' : ''; ?>"><i class="fa fa-file-excel me-2"></i> Excel Upload</a>
+<a href="index.php?page=teachers" class="list-group-item list-group-item-action bg-dark text-white">
+    <i class="fa fa-chalkboard-teacher mr-2"></i> Teachers
+</a>
                 </div>
             </nav>
 
