@@ -1,29 +1,35 @@
 <?php
 include('connection.php');
 $msg = "";
+
 if (isset($_POST['add_teacher'])) {
-    $teacher_name = mysqli_real_escape_string($con, $_POST['teacher_name']);
+    $fullname = mysqli_real_escape_string($con, $_POST['teacher_name']);
     $subject = mysqli_real_escape_string($con, $_POST['subject']);
     $class = mysqli_real_escape_string($con, $_POST['class']);
-    if (!empty($teacher_name) && !empty($subject) && !empty($class)) {
-        mysqli_query($con, "INSERT INTO teachers (teacher_name, subject, class) VALUES ('$teacher_name', '$subject', '$class')");
-        $msg = "<div class='alert alert-success'>Macallinka si guul leh ayaa loo diiwaangeliyey!</div>";
+
+    if (!empty($fullname) && !empty($subject) && !empty($class)) {
+        $insert = mysqli_query($con, "INSERT INTO teachers (FullName, Email, Password) VALUES ('$fullname', '$subject', '$class')");
+        if ($insert) {
+            $msg = "<div class='alert alert-success'>Macallinka waa la diiwaangeliyey!</div>";
+        } else {
+            $msg = "<div class='alert alert-danger'>Cilad ayaa dhacday: " . mysqli_error($con) . "</div>";
+        }
     }
 }
+
 $result = mysqli_query($con, "SELECT * FROM teachers");
 ?>
 
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
         <h2>Teachers Management</h2>
-        <button class="btn btn-primary shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#teacherForm" style="transition: 0.3s; padding: 10px 20px; border-radius: 8px; cursor: pointer;">
+        <button class="btn btn-primary shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#teacherForm">
             <i class="fa fa-plus-circle me-2"></i> Add New Teacher
         </button>
     </div>
 
     <?php echo $msg; ?>
 
-    <!-- Foomka oo Qarsoon / Soo Baxaya -->
     <div class="collapse mb-4" id="teacherForm">
         <div class="card shadow" style="max-width: 400px;">
             <div class="card-header bg-primary text-white">Add New Teacher</div>
@@ -47,7 +53,6 @@ $result = mysqli_query($con, "SELECT * FROM teachers");
         </div>
     </div>
 
-    <!-- Miiska Liiska Macallimiinta -->
     <div class="card shadow mb-4">
         <div class="card-header bg-secondary text-white">Teachers List</div>
         <div class="card-body">
@@ -61,7 +66,6 @@ $result = mysqli_query($con, "SELECT * FROM teachers");
                             <th>Class</th>
                         </tr>
                     </thead>
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
                     <tbody>
                         <?php 
                         if ($result && mysqli_num_rows($result) > 0) {
@@ -70,9 +74,9 @@ $result = mysqli_query($con, "SELECT * FROM teachers");
                                 ?>
                                 <tr>
                                     <td><?php echo $i++; ?></td>
-                                    <td><?php echo htmlspecialchars($row['teacher_name']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['subject']); ?></td>
-                                    <td><?php echo htmlspecialchars($row['class']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['FullName']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['Email']); ?></td>
+                                    <td><?php echo htmlspecialchars($row['Password']); ?></td>
                                 </tr>
                                 <?php 
                             }
@@ -86,3 +90,5 @@ $result = mysqli_query($con, "SELECT * FROM teachers");
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,16 +1,23 @@
 <?php
-
 $q_classes = "SELECT id FROM tblclasses";
 $r_classes = mysqli_query($con, $q_classes);
-$total_classes = mysqli_num_rows($r_classes);
+$total_classes = $r_classes ? mysqli_num_rows($r_classes) : 0;
 
 $q_subjects = "SELECT id FROM tblsubjects";
 $r_subjects = mysqli_query($con, $q_subjects);
-$total_subjects = mysqli_num_rows($r_subjects);
+$total_subjects = $r_subjects ? mysqli_num_rows($r_subjects) : 0;
 
-$q_students = "SELECT id FROM tblstudents";
+$q_students = "SELECT StudentId FROM tblstudents";
 $r_students = mysqli_query($con, $q_students);
-$total_students = mysqli_num_rows($r_students);
+$total_students = $r_students ? mysqli_num_rows($r_students) : 0;
+
+$total_teachers_query = mysqli_query($con, "SELECT COUNT(*) as total FROM teachers");
+if ($total_teachers_query) {
+    $teacher_data = mysqli_fetch_assoc($total_teachers_query);
+    $count_teachers = $teacher_data['total'];
+} else {
+    $count_teachers = 0;
+}
 ?>
 
 <div class="pt-3 pb-2 mb-3 border-bottom">
@@ -23,12 +30,12 @@ $total_students = mysqli_num_rows($r_students);
             <div class="card-body d-flex justify-content-between align-items-center p-4">
                 <div>
                     <h3 class="display-6 fw-bold m-0"><?php echo $total_classes; ?></h3>
-         <p class="card-text m-0 fs-5">Total Classes</p>
+                    <p class="card-text m-0 fs-5">Total Classes</p>
                 </div>
                 <i class="fa fa-folder-open fa-3x opacity-50"></i>
             </div>
-      </div>
-               </div>
+        </div>
+    </div>
 
     <div class="col-md-4">
         <div class="card bg-success text-white shadow border-0">
@@ -36,7 +43,7 @@ $total_students = mysqli_num_rows($r_students);
                 <div>
                     <h3 class="display-6 fw-bold m-0"><?php echo $total_subjects; ?></h3>
                     <p class="card-text m-0 fs-5">Total Subjects</p>
-</div>
+                </div>
                 <i class="fa fa-book fa-3x opacity-50"></i>
             </div>
         </div>
@@ -53,35 +60,18 @@ $total_students = mysqli_num_rows($r_students);
             </div>
         </div>
     </div>
-</div>
 
-
-<?php 
-// Kani waa qaybta lagu tirinayo tirada macallimiinta ee database-ka ku jirta
-$teacher_query = mysqli_query($con, "SELECT * FROM teachers");
-$total_teachers = mysqli_query($con, "SELECT COUNT(*) as total FROM teachers");
-$teacher_data = mysqli_fetch_assoc($total_teachers);
-$count_teachers = $teacher_data['total'];
-?>
-
-
-       <br>
-       
-
-        <!-- NEW: Total Teachers Card (Analysis) -->
-        <div class="col-md-4 mb-3">
-            <div class="card text-white bg-info p-3 shadow">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <h2><?php echo $count_teachers; ?></h2>
-                        <p class="mb-0">Total Teachers</p>
-                    </div>
-                    <div>
-                        <i class="fa fa-chalkboard-teacher fa-3x opacity-50"></i>
-                    </div>
+    <div class="col-md-4 mt-4">
+        <div class="card text-white bg-info p-3 shadow border-0">
+            <div class="card-body d-flex justify-content-between align-items-center p-1">
+                <div>
+                    <h3 class="display-6 fw-bold m-0"><?php echo $count_teachers; ?></h3>
+                    <p class="card-text m-0 fs-5">Total Teachers</p>
+                </div>
+                <div>
+                    <i class="fa fa-chalkboard-teacher fa-3x opacity-50"></i>
                 </div>
             </div>
         </div>
-
     </div>
 </div>

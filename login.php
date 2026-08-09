@@ -22,7 +22,7 @@ if(isset($_POST['login'])) {
         exit();
     } else {
         // Halkan ayaan ku eegaynaa waxa dhabta ah ee cilladda ah
-        $error = "Username ama Password-ka waa khalad sxb! (Waxaa la raadinayay: User: $username)";
+        $error = "Username ama Passwordku waa khalad dib u hubi ! (Waxaa la raadinayay: User: $username)";
     }
         }
      else {

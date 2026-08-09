@@ -5,8 +5,9 @@ include('connection.php');
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>eeg Natiijada Imtixaanka</title>
+    <title>Eeg Natiijada Imtixaanka</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-light">
 <div class="container my-5">
@@ -22,7 +23,7 @@ include('connection.php');
             <div class="card shadow border-0 p-4">
                 <form method="GET" action="">
                     <div class="input-group">
-                        <input type="text" name="rollid" class="form-control form-control-lg" placeholder="Qor Roll ID-gaaga (Tusaale: SRMS-1001)" value="<?php echo isset($_GET['rollid']) ? $_GET['rollid'] : ''; ?>" required>
+                        <input type="text" name="rollid" class="form-control form-control-lg" placeholder="Qor Roll ID-gaaga (Tusaale: SRMS-1001)" value="<?php echo isset($_GET['rollid']) ? htmlspecialchars($_GET['rollid']) : ''; ?>" required>
                         <button type="submit" class="btn btn-primary btn-lg fw-bold">Raadi Natiijada</button>
                     </div>
                 </form>
@@ -31,7 +32,7 @@ include('connection.php');
     </div>
 
     <?php
-    if(isset($_GET['rollid'])) {
+    if (isset($_GET['rollid']) && !empty(trim($_GET['rollid']))) {
         $rollid = mysqli_real_escape_string($con, $_GET['rollid']);
 
         $student_q = "SELECT tblstudents.*, tblclasses.ClassName, tblclasses.Section 
@@ -41,26 +42,26 @@ include('connection.php');
         
         $student_res = mysqli_query($con, $student_q);
 
-        if(mysqli_num_rows($student_res) > 0) {
+        if ($student_res && mysqli_num_rows($student_res) > 0) {
             $student = mysqli_fetch_assoc($student_res);
-            $student_id = $student['id'];
+            $student_id = $student['StudentId'];
             ?>
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card shadow border-0 p-5 bg-white">
                         <div class="text-center border-bottom pb-3 mb-4">
-                            <h4 class="fw-bold m-0 text-primary"> PRIMARY SCHOOL</h4>
+                            <h4 class="fw-bold m-0 text-primary">PRIMARY SCHOOL</h4>
                             <small class="text-muted">Official Student Report Card</small>
                         </div>
                         
                         <div class="row mb-4">
                             <div class="col-6">
-                                <p class="mb-1"><strong>Magaca:</strong> <?php echo $student['StudentName']; ?></p>
-                                <p class="mb-0"><strong>Roll ID:</strong> <?php echo $student['RollId']; ?></p>
+                                <p class="mb-1"><strong>Magaca:</strong> <?php echo htmlspecialchars($student['StudentName']); ?></p>
+                                <p class="mb-0"><strong>Roll ID:</strong> <?php echo htmlspecialchars($student['RollId']); ?></p>
                             </div>
                             <div class="col-6 text-end">
-                                <p class="mb-1"><strong>Fasalka:</strong> <?php echo $student['ClassName']; ?></p>
-                                <p class="mb-0"><strong>Qaybta:</strong> <?php echo $student['Section']; ?></p>
+                                <p class="mb-1"><strong>Fasalka:</strong> <?php echo htmlspecialchars($student['ClassName']); ?></p>
+                                <p class="mb-0"><strong>Qaybta:</strong> <?php echo htmlspecialchars($student['Section']); ?></p>
                             </div>
                         </div>
 
@@ -83,15 +84,19 @@ include('connection.php');
                                 $total_marks = 0;
                                 $subject_count = 0;
 
-                                while($row = mysqli_fetch_assoc($results_res)) {
-                                    $total_marks += $row['marks'];
-                                    $subject_count++;
-                                    $status = ($row['marks'] >= 50) ? "<span class='badge bg-success'>Gudbay</span>" : "<span class='badge bg-danger'>Haray</span>";
-                                    echo "<tr>
-                                            <td>".$row['SubjectName']."</td>
-                                            <td class='text-center fw-bold'>".$row['marks']."</td>
-                                            <td class='text-center'>$status</td>
-                                          </tr>";
+                                if ($results_res && mysqli_num_rows($results_res) > 0) {
+                                    while ($row = mysqli_fetch_assoc($results_res)) {
+                                        $total_marks += $row['marks'];
+                                        $subject_count++;
+                                        $status = ($row['marks'] >= 50) ? "<span class='badge bg-success'>Gudbay</span>" : "<span class='badge bg-danger'>Hadhay</span>";
+                                        echo "<tr>
+                                                <td>" . htmlspecialchars($row['SubjectName']) . "</td>
+                                                <td class='text-center fw-bold'>" . htmlspecialchars($row['marks']) . "</td>
+                                                <td class='text-center'>$status</td>
+                                              </tr>";
+                                    }
+                                } else {
+                                    echo "<tr><td colspan='3' class='text-center text-muted'>Weli dhibco looma gelin ardaygan.</td></tr>";
                                 }
                                 ?>
                                 <tr class="table-secondary fw-bold">
@@ -110,7 +115,7 @@ include('connection.php');
             </div>
             <?php
         } else {
-            echo "<div class='row justify-content-center'><div class='col-md-6 alert alert-danger text-center'>Wallaahi Roll ID-gan nidaamka kuma jiro sxb! Hubi nambarka.</div></div>";
+            echo "<div class='row justify-content-center'><div class='col-md-6 alert alert-danger text-center'>Roll ID-gan nidaamka kuma jiro. Hubi nambarka fadlan.</div></div>";
         }
     }
     ?>
