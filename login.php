@@ -26,7 +26,7 @@ if(isset($_POST['login'])) {
     }
         }
      else {
-        $error = "Username-kan lama helin sxb!";
+        $error = "";
     }
     
 
@@ -55,10 +55,10 @@ if(isset($_POST['login'])) {
             <label class="form-label fw-bold">Password</label>
             <input type="password" name="password" class="form-control" required placeholder="******">
         </div>
-        <button type="submit" name="login" class="btn btn-primary w-100 fw-bold">Soo Geli System-ka</button>
+        <button type="submit" name="login" class="btn btn-primary w-100 fw-bold">login</button>
     </form>
     <div class="text-center mt-3">
-        <a href="view-result.php" class="text-decoration-none">Ma tahay Arday? Fiiri Natiijadaada</a>
+        <a href="view-result.php" class="text-decoration-none">student result</a>
     </div>
 </div>
 </body>

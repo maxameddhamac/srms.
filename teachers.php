@@ -10,7 +10,7 @@ if (isset($_POST['add_teacher'])) {
     if (!empty($fullname) && !empty($subject) && !empty($class)) {
         $insert = mysqli_query($con, "INSERT INTO teachers (FullName, Email, Password) VALUES ('$fullname', '$subject', '$class')");
         if ($insert) {
-            $msg = "<div class='alert alert-success'>Macallinka waa la diiwaangeliyey!</div>";
+            $msg = "<div class='alert alert-success'>teacher registered successfully!</div>";
         } else {
             $msg = "<div class='alert alert-danger'>Cilad ayaa dhacday: " . mysqli_error($con) . "</div>";
         }

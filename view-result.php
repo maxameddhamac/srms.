@@ -61,7 +61,7 @@ include('connection.php');
                             </div>
                             <div class="col-6 text-end">
                                 <p class="mb-1"><strong>Fasalka:</strong> <?php echo htmlspecialchars($student['ClassName']); ?></p>
-                                <p class="mb-0"><strong>Qaybta:</strong> <?php echo htmlspecialchars($student['Section']); ?></p>
+                                <p class="mb-0"><strong>shift:</strong> <?php echo htmlspecialchars($student['Section']); ?></p>
                             </div>
                         </div>
 
