@@ -16,7 +16,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f9; }
         .navbar-custom { background-color: #007bff; color: white; }
-        .sidebar { background-color: #343a40; min-height: 100vh; color: #fff; }
+        .sidebar { background-color: #364554; min-height: 100vh; color: #fff; }
         .sidebar a { color: #c2c7d0; text-decoration: none; padding: 12px 20px; display: block; transition: 0.3s; }
         .sidebar a:hover, .sidebar a.active { background-color: #495057; color: #fff; border-left: 4px solid #007bff; }
         .main-content { padding: 30px; }
@@ -40,7 +40,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                     <a href="index.php?page=dashboard" class="<?php echo $page == 'dashboard' ? 'active' : ''; ?>"><i class="fa fa-tachometer-alt me-2"></i> Dashboard</a>
                     <a href="index.php?page=classes" class="<?php echo $page == 'classes' ? 'active' : ''; ?>"><i class="fa fa-folder-plus me-2"></i> Classes</a>
                     <a href="index.php?page=subjects" class="<?php echo $page == 'subjects' ? 'active' : ''; ?>"><i class="fa fa-book me-2"></i> Subjects</a>
-                    <a href="index.php?page=students" class="<?php echo $page == 'students' ? 'active' : ''; ?>"><i class="fa fa-users me-2"></i> Students</a>
+                    <a href="index.php?page=students" class="<?php echo ($page == 'students' || $page == 'edit-student') ? 'active' : ''; ?>"><i class="fa fa-users me-2"></i> Students</a>
                     <a href="index.php?page=results" class="<?php echo $page == 'results' ? 'active' : ''; ?>"><i class="fa fa-file-invoice me-2"></i> Results</a>
                     <a href="index.php?page=upload" class="<?php echo $page == 'upload' ? 'active' : ''; ?>"><i class="fa fa-file-excel me-2"></i> Excel Upload</a>
                     <a href="index.php?page=teachers" class="<?php echo $page == 'teachers' ? 'active' : ''; ?>"><i class="fa fa-chalkboard-teacher me-2"></i> Teachers</a>
@@ -51,13 +51,14 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
                 <?php 
                     // Nidaamka switch-ka ee si toos ah u xakameynaya faylasha
                     switch($page) {
-                        case 'dashboard': include('dashboard.php'); break;
-                        case 'classes':   include('add-classes.php'); break;
-                        case 'subjects':  include('add-subjects.php'); break;
-                        case 'students':  include('add-students.php'); break;
-                        case 'results':   include('results.php'); break;
-                        case 'upload':    include('upload-excel.php'); break;
-                        case 'teachers':  include('teachers.php'); break;
+                        case 'dashboard':   include('dashboard.php'); break;
+                        case 'classes':     include('add-classes.php'); break;
+                        case 'subjects':    include('add-subjects.php'); break;
+                        case 'students':    include('add-students.php'); break;
+                        case 'edit-student': include('edit-student.php'); break; // <-- HALKAN AAN KU DARNAY
+                        case 'results':     include('results.php'); break;
+                        case 'upload':      include('upload-excel.php'); break;
+                        case 'teachers':    include('teachers.php'); break;
                         default:
                             echo "<h2 class='mt-4'>Kusoo Dhawaada SRMS Dashboard</h2><p>Dooro mid ka mid ah menu-yada bidix si aad shaqada u bilowdo.</p>";
                             break;
