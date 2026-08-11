@@ -25,9 +25,6 @@ if (isset($_POST['save_all_results'])) {
     }
 }
 
-// Soo qaado liiska ardayda
-$students_query = mysqli_query($con, "SELECT * FROM tblstudents");
-
 // Soo qaado dhammaan maadooyinka
 $subjects_query = mysqli_query($con, "SELECT * FROM tblsubjects");
 $subjects = [];
@@ -35,6 +32,10 @@ while ($sub = mysqli_fetch_assoc($subjects_query)) {
     $subjects[] = $sub;
 }
 ?>
+
+<!-- Ku dar CSS-ka iyo JS-ka Select2 si uu search-ku u noqdo mid casri ah oo raadin kara -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
 
 <div class="container-fluid">
     <div class="pt-3 pb-2 mb-3 border-bottom">
@@ -46,12 +47,14 @@ while ($sub = mysqli_fetch_assoc($subjects_query)) {
     <div class="card shadow p-4" style="max-width: 700px;">
         <form method="POST" action="">
             <div class="mb-3">
-                <label class="form-label fw-bold">Select Student</label>
-                <select name="student_id" class="form-select" id="studentSelect" required onchange="fetchStudentClass(this)">
-                    <option value="">-- Dooro Ardayga --</option>
+                <label class="form-label fw-bold">Search and Select Student</label>
+                <!-- Waxaan ka dhignay Select oo leh class-ka select2 si uu u noqdo mid la raadin karo -->
+                <select name="student_id" class="form-select select2-student" id="studentSelect" required onchange="fetchStudentClass(this)">
+                    <option value="">-- Raadi magaca ama Roll ID-ga ardayga --</option>
                     <?php 
+                    $students_query = mysqli_query($con, "SELECT tblstudents.*, tblclasses.ClassName, tblclasses.Section FROM tblstudents LEFT JOIN tblclasses ON tblstudents.ClassId = tblclasses.id");
                     while ($std = mysqli_fetch_assoc($students_query)) {
-                        echo "<option value='".$std['StudentId']."' data-class='".$std['ClassId']."'>".$std['StudentName']." (Roll: ".$std['RollId'].")</option>";
+                        echo "<option value='".$std['StudentId']."' data-class='".$std['ClassId']."'>".$std['StudentName']." (Roll: ".$std['RollId'].") - Class: ".$std['ClassName']."</option>";
                     }
                     ?>
                 </select>
@@ -94,10 +97,22 @@ while ($sub = mysqli_fetch_assoc($subjects_query)) {
     </div>
 </div>
 
+<!-- jQuery iyo Select2 JS si uu search-ku u shaqeeyo -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <script>
+$(document).ready(function() {
+    $('.select2-student').select2({
+        theme: 'bootstrap-5',
+        placeholder: '-- Raadi magaca ama Roll ID-ga ardayga --',
+        allowClear: true
+    });
+});
+
 function fetchStudentClass(select) {
     var selectedOption = select.options[select.selectedIndex];
-    var classId = selectedOption.getAttribute('data-class');
+    var classId = selectedOption ? selectedOption.getAttribute('data-class') : '';
     document.getElementById('classIdInput').value = classId ? classId : '';
 }
 </script>
