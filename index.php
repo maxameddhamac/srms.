@@ -24,15 +24,18 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 </head>
 <body>
 
-    <nav class="navbar navbar-custom sticky-top shadow p-2">
+   <nav class="navbar navbar-custom sticky-top shadow p-2">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1 text-white fs-5"><i class="fa fa-bars me-3"></i> SRMS Admin</span>
+            <button class="btn text-white border-0 fs-5" id="sidebarToggle" type="button">
+                <i class="fa fa-bars"></i>
+            </button>
+            <span class="navbar-brand mb-0 h1 text-white fs-5 me-auto ms-2">SRMS Admin</span>
         </div>
     </nav>
 
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block sidebar p-0 shadow">
+            <nav id="sidebarMenu" class="col-md-2 d-md-block sidebar p-0 shadow collapse show">
                 <div class="p-3 text-center border-bottom border-secondary">
                     <h5 class="m-0 text-white">Administrator</h5>
                 </div>
@@ -67,6 +70,14 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
             </main>
         </div>
     </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('sidebarToggle').addEventListener('click', function () {
+        var sidebar = document.getElementById('sidebarMenu');
+        var bsCollapse = new bootstrap.Collapse(sidebar, {
+            toggle: true
+        });
+    });
+</script>
 </body>
 </html>
