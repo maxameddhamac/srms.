@@ -2,7 +2,7 @@
 include('connection.php');
 $msg = "";
 
-// Hubi in ID-gu uu soo gaaray URL-ka
+
 if (isset($_GET['id'])) {
     $sid = intval($_GET['id']);
     
@@ -19,7 +19,7 @@ if (isset($_GET['id'])) {
     exit();
 }
 
-// Haddii la riixo badhanka Update-ka
+
 if (isset($_POST['update'])) {
     $name = mysqli_real_escape_string($con, $_POST['studentname']);
     $roll = mysqli_real_escape_string($con, $_POST['rollid']);
@@ -35,7 +35,7 @@ if (isset($_POST['update'])) {
             $msg = "<div class='alert alert-danger'>Error updating record: " . mysqli_error($con) . "</div>";
         }
     } else {
-        $msg = "<div class='alert alert-warning'>Fadlan buuxi meelaha banaan ee qasabka ah.</div>";
+        $msg = "<div class='alert alert-warning'>Fadlan buuxi meelaha banaan.</div>";
     }
 }
 ?>

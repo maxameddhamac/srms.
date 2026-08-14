@@ -45,7 +45,7 @@ if (isset($_GET['del'])) {
 
     <!-- Miiska Ardayda -->
     <div class="card shadow border-0 p-3">
-        <input type="text" id="searchInput" class="form-control mb-3" placeholder="🔍 Raadi arday magac ama Roll ID...">
+        <input type="text" id="searchInput" class="form-control mb-3 border-radius 80px" placeholder="🔍 Raadi magac ama Roll ID">
         <div class="table-responsive">
             <table class="table table-bordered table-striped align-middle" id="studentTable">
                 <thead class="table-dark">
@@ -78,7 +78,7 @@ if (isset($_GET['del'])) {
                                     <a href='index.php?page=edit-student&id=" . $row['StudentId'] . "' class='btn btn-sm btn-warning text-white me-1' title='Edit'>
                                         <i class='fa fa-edit'></i> Edit
                                     </a>
-                                    <a href='index.php?page=students&del=" . $row['StudentId'] . "' class='btn btn-sm btn-danger' title='Delete' onclick='return confirm(\"Ma hubtaa inaad tirtirto ardaygan?\");'>
+                                    <a href='index.php?page=students&del=" . $row['StudentId'] . "' class='btn btn-sm btn-danger' title='Delete' onclick='return confirm(\"Ma hubtaa inaad delete garynyso ardaygan?\");'>
                                         <i class='fa fa-trash'></i> Delete
                                     </a>
                                 </td>
@@ -94,7 +94,7 @@ if (isset($_GET['del'])) {
     </div>
 </div>
 
-<!-- Modal-ka Foomka lagu daro ardayda -->
+<!-- Foomka lagu daro ardayda -->
 <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -106,15 +106,15 @@ if (isset($_GET['del'])) {
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label fw-bold">Full Name</label>
-                        <input type="text" name="studentname" class="form-control" placeholder="Qor magaca rasmiga ah" required>
+                        <input type="text" name="studentname" class="form-control" placeholder="Qor magaca ardayga oo saddexan ah" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Roll ID</label>
-                        <input type="text" name="rollid" class="form-control" placeholder="Tusaale: SRMS-1001" required>
+                        <input type="text" name="rollid" class="form-control" placeholder="sii ID ardaygan" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Phone Number</label>
-                        <input type="text" name="phone" class="form-control" placeholder="Qor lambarka teleefanka" required>
+                        <input type="text" name="phone" class="form-control" placeholder="Qor lambarka teleefanka o ka herysii furaha" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Dooro Fasal (Class)</label>

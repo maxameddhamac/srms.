@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
             $result = mysqli_query($con, $query);
 
             if ($result) {
-                $msg = "<div class='alert alert-success mt-2'>Maaddada si guul leh ayaa loo kaydiyey sxb!</div>";
+                $msg = "<div class='alert alert-success mt-2'>Subject saved successfully</div>";
             } else {
                 $msg = "<div class='alert alert-danger mt-2'>Error ayaa dhacay: " . mysqli_error($con) . "</div>";
             }
@@ -58,7 +58,7 @@ $subjects_result = mysqli_query($con, "SELECT * FROM tblsubjects ORDER BY id ASC
             </div>
         </div>
 
-        <!-- Miiska Liiska Maadooyinka (Subjects List) -->
+        <!-- Liiska Maadooyinka (Subjects List) -->
         <div class="col-md-7">
             <div class="card shadow border-0">
                 <div class="card-header bg-secondary text-white fw-bold">Subjects List</div>

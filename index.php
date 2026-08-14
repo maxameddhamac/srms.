@@ -52,13 +52,13 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 
             <main class="col-md-10 ms-sm-auto main-content">
                 <?php 
-                    // Nidaamka switch-ka ee si toos ah u xakameynaya faylasha
+                    // switch ka xukumaya faylasha wa kan
                     switch($page) {
                         case 'dashboard':   include('dashboard.php'); break;
                         case 'classes':     include('add-classes.php'); break;
                         case 'subjects':    include('add-subjects.php'); break;
                         case 'students':    include('add-students.php'); break;
-                        case 'edit-student': include('edit-student.php'); break; // <-- HALKAN AAN KU DARNAY
+                        case 'edit-student': include('edit-student.php'); break; 
                         case 'results':     include('results.php'); break;
                         case 'upload':      include('upload-excel.php'); break;
                         case 'teachers':    include('teachers.php'); break;
