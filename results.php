@@ -85,7 +85,7 @@ while ($sub = mysqli_fetch_assoc($subjects_query)) {
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="2" class="text-center">Weli maadooyin lama diiwaangelin.</td>
+                                <td colspan="2" class="text-center">lama diwaan gelin weli maadooyinka </td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
