@@ -2,7 +2,7 @@
 session_start();
 include('connection.php');
 
-// Waxaan qaadaneynaa bogga la rabo, haddii uusan jirinna waxaan u dejineynaa dashboard
+// maskaxda koodka; waxay eegaysaa bogga aad gujiyo
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 ?>
 <!DOCTYPE html>
@@ -23,8 +23,8 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
     </style>
 </head>
 <body>
-
-   <nav class="navbar navbar-custom sticky-top shadow p-2">
+    
+   <nav class="navbar navbar-custom sticky-top shadow p-2"> 
         <div class="container-fluid">
             <button class="btn text-white border-0 fs-5" id="sidebarToggle" type="button">
                 <i class="fa fa-bars"></i>
@@ -52,7 +52,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 
             <main class="col-md-10 ms-sm-auto main-content">
                 <?php 
-                    // switch ka xukumaya faylasha wa kan
+                    // dynnamic routing system based on the 'page' parameter in the URL
                     switch($page) {
                         case 'dashboard':   include('dashboard.php'); break;
                         case 'classes':     include('add-classes.php'); break;
