@@ -26,9 +26,10 @@ if (isset($_POST['submit'])) {
     }
 }
 
-// Soo qaado dhammaan fasallada si loogu soo bandhigo miiska
+// Soo qaado dhammaan fasallada si loogu soo bandhigo liiska
 $classes_result = mysqli_query($con, "SELECT * FROM tblclasses");
 ?>
+
 
 <div class="container-fluid">
     <div class="pt-3 pb-2 mb-3 border-bottom">
@@ -58,7 +59,7 @@ $classes_result = mysqli_query($con, "SELECT * FROM tblclasses");
             </div>
         </div>
 
-        <!-- Miiska Liiska Fasallada (Classes List) -->
+        <!-- Liiska Fasallada (Classes List) -->
         <div class="col-md-7">
             <div class="card shadow border-0">
                 <div class="card-header bg-secondary text-white fw-bold">Classes List</div>

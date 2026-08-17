@@ -2,7 +2,7 @@
 session_start();
 include('connection.php');
 
-// maskaxda koodka; waxay eegaysaa bogga aad gujiyo
+// maskaxda koodka; waxay eegaysaa bogga aad taabto
 $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
 ?>
 <!DOCTYPE html>

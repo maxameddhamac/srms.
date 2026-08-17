@@ -43,7 +43,7 @@ if (isset($_GET['del'])) {
 
     <?php echo $msg; ?>
 
-    <!-- Miiska Ardayda -->
+    <!-- liiska Ardayda -->
     <div class="card shadow border-0 p-3">
         <input type="text" id="searchInput" class="form-control mb-3 border-radius 80px" placeholder="🔍 Raadi magac ama Roll ID">
         <div class="table-responsive">

@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $subjectcode = mysqli_real_escape_string($con, $_POST['subjectcode']);
 
     if (!empty($subjectname) && !empty($subjectcode)) {
-        // Hubi in maadada ama koodhkeedu uu hore u jiray
+        // wuxuu Hubinaya in maadada ama koodhkeedu uu hore u jiray
         $check_q = mysqli_query($con, "SELECT * FROM tblsubjects WHERE SubjectName='$subjectname' OR SubjectCode='$subjectcode'");
         
         if (mysqli_num_rows($check_q) > 0) {
@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
-// Soo qaado dhammaan maadooyinka si loogu soo bandhigo miiska
+// Soo qaado dhammaan madada 
 $subjects_result = mysqli_query($con, "SELECT * FROM tblsubjects ORDER BY id ASC");
 ?>
 
