@@ -21,7 +21,7 @@ if (isset($_POST['save_all_results'])) {
         }
         $msg = "<div class='alert alert-success'>saved!</div>";
     } else {
-        $msg = "<div class='alert alert-danger'>Fadlan dooro arday sax ah!</div>";
+        $msg = "<div class='alert alert-danger'>geli dhibox saxa!</div>";
     }
 }
 
