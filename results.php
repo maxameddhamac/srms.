@@ -19,7 +19,7 @@ if (isset($_POST['save_all_results'])) {
                 mysqli_query($con, "INSERT INTO tblresults (StudentId, ClassId, SubjectId, marks) VALUES ('$student_id', '$class_id', '$subject_id', '$mark')");
             }
         }
-        $msg = "<div class='alert alert-success'>Dhammaan dhibcaha ardayga si guul leh ayaa loo kaydiyey!</div>";
+        $msg = "<div class='alert alert-success'>saved!</div>";
     } else {
         $msg = "<div class='alert alert-danger'>Fadlan dooro arday sax ah!</div>";
     }
